@@ -2,6 +2,9 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.2.
 
+## File Structure[
+https://githubtree.mgks.dev/repo/SurajSanap-amd/PhoneixUI-Frontend/main/
+
 ## Development server
 
 To start a local development server, run:
