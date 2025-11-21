@@ -1,0 +1,21 @@
+<div class="admin-container" *ngIf="isAdmin">
+  <h2>Admin Panel</h2>
+  <p>Manage all submitted ideas below.</p>
+  
+
+  <div class="ideas-grid">
+    <div *ngFor="let idea of ideas" class="idea-card">
+      <h3>{{ idea.toilItem }}</h3>
+      <p><strong>Owner:</strong> {{ idea.name }} ({{ idea.email }})</p>
+      <p><strong>Status:</strong> {{ idea.status }}</p>
+      <p><strong>Impact:</strong> {{ idea.impact }}</p>
+      <p><strong>Priority:</strong> {{ idea.priority }}</p>
+      <p><strong>Created:</strong> {{ idea.createdDate | date: 'short' }}</p>
+
+      <div class="actions">
+        <button (click)="editIdea(idea)">✏️ Edit</button>
+        <button (click)="deleteIdea(idea.id)">🗑 Delete</button>
+      </div>
+    </div>
+  </div>
+</div>

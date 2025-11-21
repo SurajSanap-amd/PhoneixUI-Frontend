@@ -1,0 +1,215 @@
+/* ---------- GLOBAL ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+}
+
+/* ---------- BACKGROUND ---------- */
+.profile-container,
+.profile-view {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+/* ---------- LOGIN CARD ---------- */
+.login-card {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 40px 50px;
+  border-radius: 15px;
+  box-shadow: 0 0 25px rgba(0, 180, 216, 0.4);
+  color: white;
+  width: 400px;
+  text-align: center;
+}
+
+.login-card h2 {
+  margin-bottom: 10px;
+  color: #00b4d8;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  color: #aaa;
+  margin-bottom: 25px;
+}
+
+/* ---------- FORM INPUTS ---------- */
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  color: #ccc;
+  font-weight: 500;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  color: white;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+input::placeholder {
+  color: #bbb;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: 0 0 8px #00b4d8;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* ---------- LOGIN BUTTON ---------- */
+.login-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #00b4d8, #7209b7);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 180, 216, 0.4);
+}
+
+.login-btn:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+/* ---------- PROFILE CARD ---------- */
+.profile-card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 25px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  margin-bottom: 30px;
+  transition: 0.3s;
+}
+
+.profile-card:hover {
+  transform: translateY(-5px);
+}
+
+.profile-card img {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 15px;
+  border: 3px solid #00b4d8;
+}
+
+.profile-card h2 {
+  color: #00e0ff;
+  margin-bottom: 5px;
+}
+
+.email {
+  color: #ccc;
+  margin-bottom: 15px;
+}
+
+.logout-btn {
+  background: linear-gradient(90deg, #ef476f, #d90429);
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.logout-btn:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+/* ---------- IDEAS SECTION ---------- */
+.ideas-section {
+  width: 100%;
+  max-width: 900px;
+  margin: auto;
+}
+
+.ideas-section h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #00e0ff;
+}
+
+.ideas-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.idea-card {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 15px 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+.idea-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px rgba(0, 180, 216, 0.5);
+}
+
+.idea-card h4 {
+  color: #00b4d8;
+  margin-bottom: 10px;
+}
+
+.desc {
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+/* ---------- ACTION BUTTONS ---------- */
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.actions button {
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.actions button:first-child {
+  background: linear-gradient(90deg, #ffb347, #ffcc33);
+  color: #222;
+}
+
+.actions button:last-child {
+  background: linear-gradient(90deg, #ef476f, #d90429);
+  color: white;
+}
+
+.actions button:hover {
+  transform: scale(1.05);
+}

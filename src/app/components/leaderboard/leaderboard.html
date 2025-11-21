@@ -1,0 +1,52 @@
+<div class="leaderboard-container">
+  <h1>🏆 Top Improvement Ideas</h1>
+  <p class="subtitle">Celebrating innovation and impact within the team 🚀</p>
+
+  <div *ngIf="loading" class="loading">Loading leaderboard...</div>
+
+  <!-- Top 3 Cards -->
+  <div *ngIf="!loading && topIdeas.length > 0" class="top3-section">
+    <div
+      class="top-card"
+      *ngFor="let idea of topIdeas.slice(0, 3); let i = index"
+      [class.gold]="i === 0"
+      [class.silver]="i === 1"
+      [class.bronze]="i === 2"
+    >
+      <div class="rank-badge">#{{ i + 1 }}</div>
+      <h2>{{ idea.toilItem || 'Untitled Idea' }}</h2>
+      <p class="owner">👤 {{ idea.name || 'Unknown' }}</p>
+      <p class="impact">Impact: <strong>{{ idea.impact }}</strong></p>
+      <p class="priority">Priority: <strong>{{ idea.priority }}</strong></p>
+      <p class="likes">💙 {{ idea.likes || 0 }} Likes</p>
+    </div>
+  </div>
+
+  <!-- Divider -->
+  <div *ngIf="topIdeas.length > 3" class="divider"></div>
+
+  <!-- Remaining Ideas Table -->
+  <div *ngIf="!loading && topIdeas.length > 3" class="leaderboard-grid">
+    <div
+      class="leader-card"
+      *ngFor="let idea of topIdeas.slice(3); let i = index"
+    >
+      <div class="rank">#{{ i + 4 }}</div>
+      <h3 class="title">{{ idea.toilItem || 'Untitled Idea' }}</h3>
+      <p class="owner">{{ idea.name || 'Unknown' }}</p>
+      <p class="impact">Impact: {{ idea.impact }}</p>
+      <p class="priority">Priority: {{ idea.priority }}</p>
+      <p class="description">
+        {{ idea.description || 'No description provided.' }}
+      </p>
+      <div class="bottom">
+        <span class="date">📅 {{ idea.createdDate | date: 'mediumDate' }}</span>
+        <span class="likes">👍 {{ idea.likes || 0 }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!loading && topIdeas.length === 0" class="no-ideas">
+    No ideas available yet.
+  </div>
+</div>

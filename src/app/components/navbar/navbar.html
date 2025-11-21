@@ -1,0 +1,20 @@
+<nav class="navbar">
+  <div class="logo">
+    <h2>💡 Team Portal</h2>
+  </div>
+
+  <ul class="nav-links">
+    <li *ngIf="isAdminUser()"><a routerLink="/admin" routerLinkActive="active">👑 Admin</a></li>
+
+    <li><a routerLink="/dashboard" routerLinkActive="active">🏠 Dashboard</a></li>
+
+    <!-- FIXED: Corrected route and added click handler -->
+    <li><a class="submit-link" (click)="goToIdeaForm()">📝 Submit Idea</a></li>
+
+
+    <li><a routerLink="/ideas" routerLinkActive="active">📋 All Ideas</a></li>
+    <li><a routerLink="/leaderboard" routerLinkActive="active">🏆 Leaderboard</a></li>
+    <li><a routerLink="/profile" routerLinkActive="active">👤 Profile</a></li>
+    <!-- <li><a (click)="logout()">🚪 Logout</a></li> -->
+  </ul>
+</nav>

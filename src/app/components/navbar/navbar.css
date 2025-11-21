@@ -1,0 +1,108 @@
+/* ---------- NAVBAR BASE ---------- */
+.navbar {
+  background: linear-gradient(90deg, #1e1e2f, #2a2a40);
+  color: white;
+  padding: 12px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* ---------- LOGO ---------- */
+.logo h2 {
+  margin: 0;
+  font-size: 1.6rem;
+  background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 1px;
+}
+
+/* ---------- NAV LINKS LIST ---------- */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------- INDIVIDUAL BUTTONS ---------- */
+.nav-links a {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* ---------- ACTIVE LINK ---------- */
+.nav-links a.active {
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  border: 1px solid #0072ff;
+  box-shadow: 0 0 10px rgba(0, 114, 255, 0.6);
+}
+
+/* ---------- HOVER EFFECT ---------- */
+.nav-links a:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(90deg, rgba(0, 198, 255, 0.6), rgba(0, 114, 255, 0.4));
+  box-shadow: 0 4px 8px rgba(0, 198, 255, 0.3);
+}
+
+.nav-links a:hover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.25), rgba(255,255,255,0.05));
+  opacity: 0.2;
+}
+
+
+/* ---------- SUBMIT IDEA BUTTON SPECIAL ---------- */
+.submit-link {
+  background: linear-gradient(90deg, #00b09b, #96c93d);
+  color: white !important;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.submit-link:hover {
+  background: linear-gradient(90deg, #56ab2f, #a8e063);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 0 12px rgba(86, 171, 47, 0.4);
+}
+
+/* ---------- RESPONSIVE DESIGN ---------- */
+@media (max-width: 900px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .nav-links a {
+    width: 100%;
+    text-align: center;
+  }
+}

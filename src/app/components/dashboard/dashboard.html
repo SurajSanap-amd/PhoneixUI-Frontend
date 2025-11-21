@@ -1,0 +1,45 @@
+<div class="dashboard-container">
+  <h1>Welcome, {{ userName }} 👋</h1>
+
+  <p class="subtitle">Here’s a quick overview of improvement ideas.</p>
+
+  <div class="stats-grid">
+    <div class="stat-card total">
+      <h2>{{ totalIdeas }}</h2>
+      <p>Total Ideas</p>
+    </div>
+
+    <div class="stat-card open">
+      <h2>{{ openIdeas }}</h2>
+      <p>Open</p>
+    </div>
+
+    <div class="stat-card progress">
+      <h2>{{ inProgressIdeas }}</h2>
+      <p>In Progress</p>
+    </div>
+
+    <div class="stat-card closed">
+      <h2>{{ closedIdeas }}</h2>
+      <p>Closed</p>
+    </div>
+  </div>
+
+  <div class="buttons">
+    <button (click)="goTo('/idea-form')">➕ Submit New Idea</button>
+    <button (click)="goTo('/ideas')">📋 View All Ideas</button>
+    <button (click)="goTo('/leaderboard')">🏆 Leaderboard</button>
+  </div>
+
+  <div class="recent-section">
+    <h3>🕒 Recent Ideas</h3>
+    <ul>
+      <li *ngFor="let idea of recentIdeas">
+        <strong>{{ idea.toilItem }}</strong>
+        <span class="status" [class]="idea.status?.toLowerCase()">
+          {{ idea.status }}
+        </span>
+      </li>
+    </ul>
+  </div>
+</div>

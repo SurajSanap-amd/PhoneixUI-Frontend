@@ -1,0 +1,70 @@
+<!-- LOGIN FORM -->
+<div class="profile-container" *ngIf="!loggedIn">
+  <div class="login-card">
+    <h2>🔐 Amdocs Idea Portal Login</h2>
+    <p class="subtitle">Sign in using your official Amdocs email</p>
+
+    <form (ngSubmit)="saveProfile()">
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input
+          id="name"
+          [(ngModel)]="name"
+          name="name"
+          placeholder="Enter your name"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email (Amdocs only)</label>
+        <input
+          id="email"
+          type="email"
+          [(ngModel)]="email"
+          name="email"
+          placeholder="you@amdocs.com"
+          required
+        />
+      </div>
+
+      <button type="submit" class="login-btn">🚀 Login</button>
+    </form>
+  </div>
+</div>
+
+<!-- PROFILE + IDEAS -->
+<div class="profile-view" *ngIf="loggedIn">
+  <div class="profile-card">
+    <img src="https://ui-avatars.com/api/?name={{name}}&background=0D8ABC&color=fff" alt="avatar" />
+    <h2>{{ name }}</h2>
+    <p class="email">{{ email }}</p>
+    <button class="logout-btn" (click)="logout()">Logout</button>
+  </div>
+
+  <div class="ideas-section">
+    <h3>💡 Your Submitted Ideas</h3>
+
+    <div *ngIf="loadingIdeas" class="loading">Loading your ideas...</div>
+
+    <div *ngIf="!loadingIdeas && ideas.length > 0" class="ideas-list">
+      <div *ngFor="let idea of ideas" class="idea-card">
+        <h4>{{ idea.toilItem }}</h4>
+        <p><strong>Category:</strong> {{ idea.category }}</p>
+        <p><strong>Status:</strong> {{ idea.status }}</p>
+        <p><strong>Impact:</strong> {{ idea.impact }}</p>
+        <p><strong>Priority:</strong> {{ idea.priority }}</p>
+        <p class="desc">{{ idea.description }}</p>
+
+        <div class="actions">
+          <button (click)="editIdea(idea)">✏️ Edit</button>
+          <button (click)="deleteIdea(idea.id)">🗑 Delete</button>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="!loadingIdeas && ideas.length === 0" class="no-ideas">
+      You haven’t submitted any ideas yet.
+    </div>
+  </div>
+</div>

@@ -1,0 +1,212 @@
+<div class="form-container">
+  <div class="form-card">
+    <h2>💡 Submit or Edit Improvement Idea</h2>
+    <p class="form-subtitle">Document your idea and its impact clearly</p>
+
+    <!-- 🪜 Step Indicators -->
+    <div class="steps">
+      <div [class.active]="step >= 1">1. Basic Info</div>
+      <div [class.active]="step >= 2">2. Impact & Effort</div>
+      <div [class.active]="step >= 3">3. Review & Finalize</div>
+    </div>
+
+    <form (ngSubmit)="submitIdea()" #ideaForm="ngForm">
+
+      <!-- ✅ STEP 1: BASIC INFO -->
+      <div *ngIf="step === 1" class="form-section">
+        <label>Name</label>
+        <input type="text" [(ngModel)]="idea.name" name="name" required />
+
+        <label>Email</label>
+        <input type="email" [(ngModel)]="idea.email" name="email" required />
+
+        <label>Toil / Improvement Item</label>
+        <input type="text" [(ngModel)]="idea.toilItem" name="toilItem" required />
+
+        <label>Description</label>
+        <textarea [(ngModel)]="idea.description" name="description" rows="3" placeholder="Describe the idea in detail" required></textarea>
+
+        <label>Impacted Components</label>
+        <input type="text" [(ngModel)]="idea.impactedComponents" name="impactedComponents" placeholder="Component / module impacted" />
+
+        <label>Pain Points</label>
+        <textarea [(ngModel)]="idea.painPoints" name="painPoints" rows="2" placeholder="What problems are caused by the current situation?"></textarea>
+
+        <!-- <label>Frequency</label>
+        <input type="text" [(ngModel)]="idea.frequency" name="frequency" placeholder="How often does this occur?" /> -->
+
+    <label>Frequency</label>
+    <div class="frequency-input">
+      <input
+        type="text"
+        [(ngModel)]="idea.frequency"
+        name="frequency"
+        placeholder="How often does this occur?"
+        list="frequencySuggestions" />
+
+      <!-- Suggestions -->
+      <datalist id="frequencySuggestions">
+        <option value="Daily"></option>
+        <option value="Weekly"></option>
+        <option value="Monthly"></option>
+        <option value="Per Run"></option>
+      </datalist>
+    </div>
+
+
+
+
+        <label>Manual Effort</label>
+        <input type="text" [(ngModel)]="idea.manualEffort" name="manualEffort" placeholder="e.g. 2 hours per day" />
+
+        <div class="checkbox-row">
+          <label class="checkbox-container">
+            <input type="checkbox" [(ngModel)]="idea.automatable" name="automatable" />
+            <span class="checkmark"></span>
+            Automatable
+          </label>
+        </div>
+
+      </div>
+
+      <!-- ✅ STEP 2: IMPACT & EFFORT -->
+      <div *ngIf="step === 2" class="form-section">
+        <div class="grid-2">
+          <div>
+            <label>Impact Level</label>
+            <select [(ngModel)]="idea.impact" name="impact" required>
+             
+              <option value="LOW">Low</option>
+              <option value="MEDIUM">Medium</option>
+              <option value="HIGH">High</option>
+     
+            </select>
+          </div>
+
+          <div>
+            <label>Priority</label>
+            <select [(ngModel)]="idea.priority" name="priority" required>
+
+              <option value="LOW">Low</option>
+              <option value="MEDIUM">Medium</option>
+              <option value="HIGH">High</option>
+              <option value="CRITICAL">Critical</option>
+           
+            </select>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div>
+            <label>Complexity</label>
+            <select [(ngModel)]="idea.complexity" name="complexity">
+              <option value="SIMPLE">Simple</option>
+              <option value="MODERATE">Moderate</option>
+              <option value="HIGH">High</option>
+              
+            </select>
+          </div>
+
+          <div>
+            <label>Status</label>
+            <select [(ngModel)]="idea.status" name="status">
+              <option value="OPEN">Open</option>
+              <option value="IN_PROGRESS">In Progress</option>
+              <option value="CLOSED">Closed</option>
+            </select>
+          </div>
+        </div>
+
+        <label>Solution Proposal</label>
+        <textarea [(ngModel)]="idea.solution" name="solution" rows="3" placeholder="Describe your suggested solution"></textarea>
+
+        <label>Comments</label>
+        <textarea [(ngModel)]="idea.comments" name="comments" rows="2" placeholder="Additional comments or notes"></textarea>
+
+      <label>Type of Ask</label>
+      <div class="type-of-ask-input">
+        <input
+          type="text"
+          [(ngModel)]="idea.typeOfAsk"
+          name="typeOfAsk"
+          placeholder="What kind of help or resource needed?"
+          list="typeOfAskSuggestions" />
+
+        <datalist id="typeOfAskSuggestions">
+          <option value="Daily execution - Testing"></option>
+          <option value="Daily execution - Dev"></option>
+          <option value="Operational"></option>
+          <option value="Operational - Performance"></option>
+          <option value="Operational - Deployment"></option>
+          <option value="Operational - Monitoring"></option>
+          <option value="Operational - Triaging"></option>
+          <option value="Development"></option>
+          <option value="Automation - Testing"></option>
+          <option value="Scrum Testing"></option>
+          <option value="Onboarding"></option>
+          <option value="Infrastructure"></option>
+          <option value="QAT Testing"></option>
+          <option value="Release Management"></option>
+          <option value="PMO"></option>
+          <option value="Developer Experience"></option>
+          <option value="SPE - Performance"></option>
+          <option value="Yet to decide"></option>
+        </datalist>
+      </div>
+
+
+        <label>Category</label>
+        <select [(ngModel)]="idea.category" name="category" required>
+          <option value="">Select</option>
+          <option value="BUG">Bug</option>
+          <option value="FEATURE">Feature</option>
+          <option value="IMPROVEMENT">Improvement</option>
+        </select>
+
+        <label>Suggested Priority (1–10)</label>
+        <input type="number" [(ngModel)]="idea.suggestedPriority" name="suggestedPriority" min="1" max="10" />
+
+        <label>US Direction</label>
+        <textarea [(ngModel)]="idea.usDirection" name="usDirection" rows="2" placeholder="Add any US direction or guidance"></textarea>
+
+        <label>Owner to Create US</label>
+        <input type="text" [(ngModel)]="idea.ownerToCreateUS" name="ownerToCreateUS" placeholder="Owner name for US creation" />
+
+        <div class="checkbox-row">
+          <label><input type="checkbox" [(ngModel)]="idea.jiraCreated" name="jiraCreated" /> Jira Ticket Created</label>
+        </div>
+
+        <label>Jira ID</label>
+        <input type="text" [(ngModel)]="idea.jiraId" name="jiraId" placeholder="Enter Jira ticket ID (if any)" />
+      </div>
+
+      <!-- ✅ STEP 3: REVIEW & FINALIZE -->
+      <div *ngIf="step === 3" class="form-section review-section">
+        <h3>Review Summary</h3>
+        <p><strong>Name:</strong> {{ idea.name }}</p>
+        <p><strong>Email:</strong> {{ idea.email }}</p>
+        <p><strong>Title:</strong> {{ idea.toilItem }}</p>
+        <p><strong>Description:</strong> {{ idea.description }}</p>
+        <p><strong>Impact:</strong> {{ idea.impact }}</p>
+        <p><strong>Priority:</strong> {{ idea.priority }}</p>
+        <p><strong>Complexity:</strong> {{ idea.complexity }}</p>
+        <p><strong>Status:</strong> {{ idea.status }}</p>
+        <p><strong>Jira Created:</strong> {{ idea.jiraCreated ? 'Yes' : 'No' }}</p>
+        <p><strong>Jira ID:</strong> {{ idea.jiraId }}</p>
+      </div>
+
+      <!-- ✅ BUTTONS -->
+      <div class="form-actions">
+        <button type="button" *ngIf="step > 1" (click)="prevStep()">⬅ Previous</button>
+        <button type="button" *ngIf="step < 3" (click)="nextStep()">Next ➡</button>
+        <button *ngIf="step === 3" type="submit">🚀 Submit</button>
+        <button type="button" class="reset-btn" (click)="resetForm()">🔄 Reset</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- ✅ SUCCESS TOAST -->
+  <div class="toast" *ngIf="showToast">
+    ✅ Idea Submitted Successfully!
+  </div>
+</div>

@@ -1,0 +1,77 @@
+<div class="ideas-container">
+  <h2>💡 All Ideas</h2>
+
+  <!-- Sorting  -->
+  <div class="sort-options">
+  <label for="sortBy">Sort by:</label>
+  <select id="sortBy" [(ngModel)]="sortOption" (change)="sortIdeas()">
+    <option value="likes"> Likes</option>
+    <option value="date"> Created Date</option>
+    <option value="priority"> Priority</option>
+    <option value="alphabetical"> Alphabetical</option>
+  </select>
+</div>
+
+  <div class="ideas-grid">
+    <div
+      *ngFor="let idea of ideas"
+      class="idea-card"
+      [class.expanded]="selectedIdea === idea"
+      (click)="toggleExpand(idea)"
+    >
+      <!-- Header -->
+      <div class="card-header">
+        <div>
+          <h3 class="idea-title">{{ idea.toilItem }}</h3>
+          <p class="idea-owner">👤 {{ idea.name }}</p>
+          <p class="idea-owner">{{ idea.createdDate | date: 'dd MMMM yyyy, h:mm a' }}</p>
+          
+        </div>
+
+        <button
+          class="like-btn"
+          [class.liked]="idea.isLiked"
+          (click)="likeIdea(idea); $event.stopPropagation()"
+          title="Like this idea"
+>
+          👍 {{ idea.likes || 0 }}
+        </button>
+      </div>
+
+      <!-- Tags -->
+      <div class="tags">
+        <span class="tag category">{{ idea.category }}</span>
+        <span class="tag impact {{ idea.impact?.toLowerCase() }}">{{ idea.impact }}</span>
+        <span class="tag priority {{ idea.priority?.toLowerCase() }}">{{ idea.priority }}</span>
+      </div>
+
+      <!-- Card Preview -->
+      <div *ngIf="selectedIdea !== idea" class="card-preview">
+        <p><strong>Status:</strong> {{ idea.status }}</p>
+        <p class="short-desc">
+          {{ idea.description ? (idea.description | slice: 0:80) : 'No description provided' }}
+          {{ idea.description && idea.description.length > 80 ? '...' : '' }}
+        </p>
+      </div>
+
+      <!-- Expanded Details -->
+      <div *ngIf="selectedIdea === idea" class="card-details">
+        <p><strong>Owner:</strong> {{ idea.name }} ({{ idea.email }})</p>
+        <p><strong>Category:</strong> {{ idea.category }}</p>
+        <p><strong>Complexity:</strong> {{ idea.complexity }}</p>
+        <p><strong>Impact:</strong> {{ idea.impact }}</p>
+        <p><strong>Status:</strong> {{ idea.status }}</p>
+        <p><strong>Frequency:</strong> {{ idea.frequency }}</p>
+        <p><strong>Description:</strong> {{ idea.description }}</p>
+        <p><strong>Solution:</strong> {{ idea.solution }}</p>
+        <p><strong>Pain Points:</strong> {{ idea.painPoints }}</p>
+        <p><strong>Jira ID:</strong> {{ idea.jiraId || 'N/A' }}</p>
+
+        <div class="actions">
+          <button *ngIf="isOwner(idea) || isAdmin()" (click)="editIdea(idea); $event.stopPropagation()">✏️ Edit</button>
+          <button *ngIf="isOwner(idea) || isAdmin()" (click)="deleteIdea(idea.id); $event.stopPropagation()">🗑 Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
