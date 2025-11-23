@@ -5,6 +5,11 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 ## File Structure[
 https://githubtree.mgks.dev/repo/SurajSanap-amd/PhoneixUI-Frontend/main/
 
+<img width="1920" height="1200" alt="Screenshot 2025-10-10 101052" src="https://github.com/user-attachments/assets/f834ebbb-a0bf-4c77-88d5-407403d27d15" />
+<img width="1920" height="1200" alt="Screenshot 2025-10-10 101113" src="https://github.com/user-attachments/assets/d726b8cb-3ee7-434a-91fa-85fec7021c0a" />
+
+
+
 ## Development server
 
 To start a local development server, run:
